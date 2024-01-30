@@ -1,6 +1,10 @@
 # java-trading
 
-## ## Step 1: Define Project Scope and Requirements
+### Resources:
+[Testing in Spring Boot](https://www.youtube.com/watch?v=Geq60OVyBPg)
+[Spring Boot tutorial](https://www.youtube.com/watch?v=Nv2DERaMx-4)
+
+## Step 1: Define Project Scope and Requirements
 
 ### Objective:
 
