@@ -24,7 +24,9 @@ public class Order extends BaseDatabaseModel {
 
     private OrderStatus orderStatus;
 
-    public Order() {}
+    public Order() {
+    }
+
     public Order(Long userId, Long currencyPairId, OrderType orderType, double quantity, double price, OrderStatus orderStatus) {
         this.userId = userId;
         this.currencyPairId = currencyPairId;

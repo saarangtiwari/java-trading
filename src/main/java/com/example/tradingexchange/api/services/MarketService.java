@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ExchangeService {
+public class MarketService {
 
     private final CurrencyPairRepository currencyPairRepository;
 
 
     @Autowired
-    public ExchangeService(CurrencyPairRepository currencyPairRepository) {
+    public MarketService(CurrencyPairRepository currencyPairRepository) {
         this.currencyPairRepository = currencyPairRepository;
     }
 
