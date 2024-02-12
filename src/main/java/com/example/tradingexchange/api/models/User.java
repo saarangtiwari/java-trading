@@ -14,6 +14,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class User extends
         BaseDatabaseModel {
 
+    public User() {
+    }
 
     @Column(name = "name", nullable = false)
     private String name;

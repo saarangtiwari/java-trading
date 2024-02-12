@@ -1,8 +1,6 @@
 package com.example.tradingexchange.api.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
@@ -12,15 +10,39 @@ public class CurrencyPair extends BaseDatabaseModel {
     public String name;
     public double current_price;
 
-    private Long baseCurrencyId;
+    @OneToOne
+    @JoinColumn(name = "target_currency_id", referencedColumnName = "id")
+    private Currency targetCurrency;
 
-    private Long targetCurrencyId;
+    @OneToOne
+    @JoinColumn(name = "base_currency_id", referencedColumnName = "id")
+    private Currency baseCurrency;
 
-    public CurrencyPair(String name, double current_price, Long baseCurrencyId, Long targetCurrencyId) {
+
+    public CurrencyPair() {
+    }
+
+    public CurrencyPair(String name, double current_price, Currency baseCurrency, Currency targetCurrency) {
         this.name = name;
         this.current_price = current_price;
-        this.baseCurrencyId = baseCurrencyId;
-        this.targetCurrencyId = targetCurrencyId;
+        this.targetCurrency = targetCurrency;
+        this.baseCurrency = baseCurrency;
+    }
+
+    public Currency getTargetCurrency() {
+        return targetCurrency;
+    }
+
+    public void setTargetCurrency(Currency targetCurrency) {
+        this.targetCurrency = targetCurrency;
+    }
+
+    public Currency getBaseCurrency() {
+        return baseCurrency;
+    }
+
+    public void setBaseCurrency(Currency baseCurrency) {
+        this.baseCurrency = baseCurrency;
     }
 
     public String getName() {
@@ -39,19 +61,5 @@ public class CurrencyPair extends BaseDatabaseModel {
         this.current_price = current_price;
     }
 
-    public Long getBaseCurrencyId() {
-        return baseCurrencyId;
-    }
 
-    public void setBaseCurrencyId(Long baseCurrencyId) {
-        this.baseCurrencyId = baseCurrencyId;
-    }
-
-    public Long getTargetCurrencyId() {
-        return targetCurrencyId;
-    }
-
-    public void setTargetCurrencyId(Long targetCurrencyId) {
-        this.targetCurrencyId = targetCurrencyId;
-    }
 }
