@@ -6,6 +6,8 @@ import com.example.tradingexchange.api.models.User;
 import com.example.tradingexchange.api.repositories.CurrencyPairRepository;
 import com.example.tradingexchange.api.repositories.CurrencyRepository;
 import com.example.tradingexchange.api.repositories.UserRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +17,9 @@ public class ApplicationConfiguration {
     private final UserRepository userRepository;
     private final CurrencyPairRepository currencyPairRepository;
     private final CurrencyRepository currencyRepository;
+
+//    @PersistenceContext
+//    private EntityManager entityManager;
 
     public ApplicationConfiguration(UserRepository userRepository, CurrencyPairRepository currencyPairRepository, CurrencyRepository currencyRepository) {
         this.userRepository = userRepository;
@@ -29,6 +34,7 @@ public class ApplicationConfiguration {
             Currency c1 = currencyRepository.save(new Currency("BTC", "Bitcoin"));
             Currency c2 = currencyRepository.save(new Currency("USD", "US Dollar"));
             currencyPairRepository.save(new CurrencyPair("BTC-USD", 200, c1, c2));
+
         };
     }
 }
