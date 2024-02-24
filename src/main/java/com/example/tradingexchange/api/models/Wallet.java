@@ -6,14 +6,14 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
 @Table(name = "wallets")
 @EntityListeners(AuditingEntityListener.class)
-public class Wallet {
+public class Wallet extends BaseDatabaseModel {
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "currency_id", referencedColumnName = "id")
     private Currency currency;
 
@@ -23,6 +23,14 @@ public class Wallet {
     @Column(name = "locked_balance", nullable = false)
     private Double lockedBalance;
 
+//    @Column(name = "currency_id")
+//    private Long currencyId;
+//
+//    @Column(name = "user_id")
+//    private Long userId;
+
+    public Wallet() {
+    }
 
     public Wallet(User user, Currency currency, Double balance, Double lockedBalance) {
         this.user = user;
