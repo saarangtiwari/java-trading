@@ -35,7 +35,7 @@ public class ApplicationConfiguration {
             Currency c1 = currencyRepository.save(new Currency("BTC", "Bitcoin"));
             Currency c2 = currencyRepository.save(new Currency("USD", "US Dollar"));
             currencyPairRepository.save(new CurrencyPair("BTC-USD", 200, c1, c2));
-            Wallet wallet = walletRepository.save((new Wallet(user, c2, 1000d, 0d)));
+            Wallet wallet = walletRepository.save((new Wallet(user, c2.id, 1000d, 0d)));
 
         };
     }

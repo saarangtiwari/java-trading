@@ -8,13 +8,13 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public class Wallet extends BaseDatabaseModel {
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
     private User user;
 
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "currency_id", referencedColumnName = "id")
+    @ManyToOne()
+    @JoinColumn(name = "currency_id")
     private Currency currency;
 
     @Column(name = "balance", nullable = false)
@@ -26,9 +26,10 @@ public class Wallet extends BaseDatabaseModel {
     public Wallet() {
     }
 
-    public Wallet(User user, Currency currency, Double balance, Double lockedBalance) {
+    public Wallet(User user, Long currencyId, Double balance, Double lockedBalance) {
         this.user = user;
-        this.currency = currency;
+        this.currency = new Currency();
+        this.currency.setId(currencyId);
         this.balance = balance;
         this.lockedBalance = lockedBalance;
     }

@@ -1,11 +1,10 @@
 package com.example.tradingexchange.api.models;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.List;
 
 
 @Entity
@@ -28,6 +27,8 @@ public class User extends
         this.email = email;
     }
 
+    @OneToMany(mappedBy = "user")
+    private List<Wallet> wallets;
     public void setName(String name) {
         this.name = name;
     }
