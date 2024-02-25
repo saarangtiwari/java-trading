@@ -1,7 +1,7 @@
 package com.example.tradingexchange.api.controllers;
 
 
-import com.example.tradingexchange.api.models.Wallet;
+import com.example.tradingexchange.api.dto.UserWalletDto;
 import com.example.tradingexchange.api.services.WalletService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +21,7 @@ public class WalletController {
     }
 
     @GetMapping("")
-    public List<Wallet> getWalletsByUserId(@PathVariable Long userId) {
+    public List<UserWalletDto> getWalletsByUserId(@PathVariable Long userId) {
         return this.walletService.getWalletsByUserId(userId);
     }
 }

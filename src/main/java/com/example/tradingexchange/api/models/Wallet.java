@@ -23,12 +23,6 @@ public class Wallet extends BaseDatabaseModel {
     @Column(name = "locked_balance", nullable = false)
     private Double lockedBalance;
 
-//    @Column(name = "currency_id")
-//    private Long currencyId;
-//
-//    @Column(name = "user_id")
-//    private Long userId;
-
     public Wallet() {
     }
 

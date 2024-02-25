@@ -1,6 +1,6 @@
 package com.example.tradingexchange.api.services;
 
-import com.example.tradingexchange.api.models.Wallet;
+import com.example.tradingexchange.api.dto.UserWalletDto;
 import com.example.tradingexchange.api.repositories.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class WalletService {
         this.walletRepository = walletRepository;
     }
 
-    public List<Wallet> getWalletsByUserId(Long userId) {
+    public List<UserWalletDto> getWalletsByUserId(Long userId) {
         return this.walletRepository.findByUserId(userId);
     }
 }
